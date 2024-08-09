@@ -14,6 +14,7 @@ import ru.curoviyxru.j2vk.api.responses.VKResponse;
 public class AudioGetResponse extends VKResponse {
 
     public Audio[] items;
+    public int count;
 
     public boolean hasItems() {
         return items != null && items.length > 0;
@@ -27,6 +28,7 @@ public class AudioGetResponse extends VKResponse {
 
         JSONObject obj = json.optJSONObject("response");
         if (obj != null) {
+        	count = obj.optInt("count");
             JSONArray array = obj.optJSONArray("items");
             if (array != null) {
                 items = new Audio[array.length()];
